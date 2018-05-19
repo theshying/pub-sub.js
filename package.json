@@ -1,0 +1,31 @@
+{
+  "name": "event-bus",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "rollup -c",
+    "watch": "rollup -c -w",
+    "dev": "npm-run-all --parallel start watch",
+    "start": "serve public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/theshying/event-bus.git"
+  },
+  "keywords": [],
+  "author": "theShy",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/theshying/event-bus/issues"
+  },
+  "homepage": "https://github.com/theshying/event-bus#readme",
+  "devDependencies": {
+    "npm-run-all": "^4.1.2",
+    "rollup": "^0.55.5",
+    "rollup-plugin-commonjs": "^8.0.2",
+    "rollup-plugin-node-resolve": "^3.0.0",
+    "rollup-plugin-uglify": "^3.0.0"
+  },
+  "dependencies": {}
+}
