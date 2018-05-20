@@ -1,2 +1,2 @@
-"use strict";console.log(1);
+"use strict";require("rollup/dist/typings/utils/error");
 //# sourceMappingURL=bundle.js.map

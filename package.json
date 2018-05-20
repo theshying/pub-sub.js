@@ -21,8 +21,10 @@
   },
   "homepage": "https://github.com/theshying/event-bus#readme",
   "devDependencies": {
+    "babel-preset-es2015-rollup": "^3.0.0",
     "npm-run-all": "^4.1.2",
     "rollup": "^0.55.5",
+    "rollup-plugin-babel": "^3.0.4",
     "rollup-plugin-commonjs": "^8.0.2",
     "rollup-plugin-node-resolve": "^3.0.0",
     "rollup-plugin-uglify": "^3.0.0"
