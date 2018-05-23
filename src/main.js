@@ -1,4 +1,6 @@
 
+import { checkType } from './utils'
+
 function Event(option) {
     let eventList = new Map()
     // 订阅函数
@@ -37,3 +39,5 @@ function Event(option) {
         off,
     }
 }
+
+exports.default = Event;

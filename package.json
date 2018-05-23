@@ -28,7 +28,8 @@
     "rollup-plugin-babel": "^3.0.4",
     "rollup-plugin-commonjs": "^8.0.2",
     "rollup-plugin-node-resolve": "^3.0.0",
-    "rollup-plugin-uglify": "^3.0.0"
+    "rollup-plugin-uglify": "^3.0.0",
+    "serve": "^6.5.8"
   },
   "dependencies": {}
 }
