@@ -2,7 +2,7 @@ const expect = require('chai').expect;
 const utils = require('../src/utils.js')
 
 describe('utils', function() {
-    describe('checkType', function() {
+    describe('|--checkType', function() {
         it('check Array', function() {
             expect(utils.checkType([],'array')).to.be.equal(true)
         })
