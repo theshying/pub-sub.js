@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/theshying/event-bus#readme",
   "devDependencies": {
+    "babel-core": "^6.26.3",
     "babel-preset-es2015-rollup": "^3.0.0",
     "npm-run-all": "^4.1.2",
     "rollup": "^0.55.5",

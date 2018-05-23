@@ -1,4 +1,3 @@
-import error from "rollup/dist/typings/utils/error";
 
 function checkType(arg,type) {
     if ([...arguments].length >=2) {
@@ -7,6 +6,6 @@ function checkType(arg,type) {
     throw error('参数错误')
 }
 
-export {
+module.export = {
     checkType,
 }
