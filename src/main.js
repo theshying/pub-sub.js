@@ -1,5 +1,5 @@
 
-import { checkType } from './utils'
+
 
 function Event(option) {
     let eventList = new Map()
