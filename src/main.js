@@ -1,16 +1,13 @@
-
-
-
 function Event(option) {
-    const {cache} = option;
+    let { cache } = option
     let eventList = new Map();
     let emitList = new Map();
     // 在线订阅函数
-    function on(type, ...fn){
+    function on(type, ...fn) {
         let fns = eventList.get(type);
         if (Array.isArray(fns)) {
             eventList.set(type, [...fn].concat(...fns))
-        } else{
+        } else {
             eventList.set(type, [...fn])
         }
     }
@@ -30,24 +27,26 @@ function Event(option) {
         }
     }
     // 发布函数
-    function emit(type, ...msg){
+    function emit(type, ...msg) {
         // if option.cache === true
+        let currentMsg = [...msg];
         if (Boolean(cache)) {
-            let currentMsg = [...msg];
-            if (emitList.has(type)){
+            if (emitList.has(type)) {
                 currentMsg.push(emitList.get(type))
             }
-            emitList.set(type,currentMsg)
+            emitList.set(type, currentMsg)
         }
         let fns = eventList.get(type);
         if (Array.isArray(fns)) {
             fns.forEach(fn => {
-                fn(...msg)
+                currentMsg.forEach(msg => {
+                    fn(msg)
+                })
             })
         }
     }
     // 取消订阅函数
-    function off(type, ...fn){
+    function off(type, ...fn) {
         let fns = eventList.get(type);
         if (Array.isArray(fns)) {
             if ([...fn].length > 0) {
@@ -58,24 +57,50 @@ function Event(option) {
             }
         }
     }
-    function once(type, ...fn) {
-
+    // 获取订阅事件列表
+    function get_event_list() {
+        return eventList
+    }
+    function get_emit_list() {
+        return emitList
     }
     return {
         on,
         emit,
         off,
-        once,
-        on_offline
+        on_offline,
+        get_emit_list,
+        get_event_list
     }
 }
 
 exports.default = Event;
 
-const e = new Event({cache: true})
-e.emit('msg', '1111111')
-e.on_offline('msg', function() {
-    console.log(...arguments)
-})
+const e = new Event({});
 
+
+// console.log('Basic usage===')
+// e.on('msg', function (arg) { console.log(arg) })
+// e.emit('msg', 'hello')
+// console.log('Basic usage===')
+
+
+
+// console.log('Multiple on function')
+// e.on('msg', function(arg) {
+//     console.log(`fun1:${arg}`)
+// }, function(arg) {
+//     console.log(`fun2:${arg}`)
+// })
+// e.emit('msg', 'hello')
+// console.log('Multiple on function')
+
+
+// console.log('Multiple emit msg')
+// e.on('msg', function(arg) {
+//     console.log(`fun1:${arg}`)
+// })
+// e.emit('msg', 'hello1', 'hello2')
+
+// console.log('Multiple emit msg')
 
