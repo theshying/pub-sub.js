@@ -1,5 +1,5 @@
-function Event(option) {
-    let { cache } = option
+function _Event(option) {
+   let cache = true
     let eventList = new Map();
     let emitList = new Map();
     // 在线订阅函数
@@ -30,12 +30,12 @@ function Event(option) {
     function emit(type, ...msg) {
         // if option.cache === true
         let currentMsg = [...msg];
-        if (Boolean(cache)) {
-            if (emitList.has(type)) {
-                currentMsg.push(emitList.get(type))
-            }
-            emitList.set(type, currentMsg)
-        }
+        // if (Boolean(cache)) {
+        //     if (emitList.has(type)) {
+        //         currentMsg.push(emitList.get(type))
+        //     }
+        //     emitList.set(type, currentMsg)
+        // }
         let fns = eventList.get(type);
         if (Array.isArray(fns)) {
             fns.forEach(fn => {
@@ -74,9 +74,9 @@ function Event(option) {
     }
 }
 
-exports.default = Event;
+exports.default = _Event();
 
-const e = new Event({});
+// const e = new _Event({});
 
 
 // console.log('Basic usage===')

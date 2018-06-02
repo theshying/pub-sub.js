@@ -10,7 +10,7 @@ const production = !process.env.ROLLUP_WATCH;
 export default {
 	input: 'src/main.js',
 	output: {
-		file: 'dist/bundle.js',
+		file: 'dist/event_bus.js',
 		format: 'cjs', // immediately-invoked function expression — suitable for <script> tags
 		sourcemap: true
 	},

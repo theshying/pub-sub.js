@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="../dist/event_bus.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <input type="button" value="emit message" id="emit" style="display: block">
+    <textarea name="" cols="100"  id="msgList" cols="30" rows="10"></textarea>
+</body>
+<script>
+    // date format
+    function formmat() {
+        let date = new Date();
+        return `${date.getFullYear()}-${date.getMonth()+1}-${date.getDate()} ${date.getHours()}: ${date.getMinutes()}: ${date.getSeconds()}`
+    }
+    var e = new _Event({});
+    var msgList = document.getElementById('msgList')
+    e.on('msg', function(msg) {
+        msgList.innerHTML = `${msgList.value}\n${formmat()}收到：  ${ msg}`
+    })
+    document.getElementById('emit').onclick= function() {
+        e.emit('msg', 'hello', 'hello2')
+    }
+</script>
+</html>
