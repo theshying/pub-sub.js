@@ -87,11 +87,16 @@ function _Event(option) {
      * @param {*} 事件主题 
      * @param {*} 回调函数
      */
-    function off(type, fn) {
+    function off(type, ...fn) {
         if (_eventList.has(type)) {
-            let fns = _eventList.get(type).filter(item => item !== fn);
-            _eventList.set(type, fns);
-
+            if ([...fn].length === 0) {
+                _eventList.set(type, []);
+                return;
+            } else {
+                let fns = _eventList.get(type).filter(item => [...fn].indexOf(item) === -1);
+                _eventList.set(type, fns);
+                return
+            }
         }
     }
 
@@ -105,7 +110,7 @@ function _Event(option) {
     /**
      * 获取事件发布列表
      */
-    function _emitList() {
+    function emitList() {
         return _eventList
     }
 
@@ -132,6 +137,8 @@ function _Event(option) {
         }
     }
     return {
+        eventList,
+        emitList,
         on,
         emit,
         off,
