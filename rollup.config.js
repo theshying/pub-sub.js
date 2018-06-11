@@ -11,10 +11,11 @@ export default {
 	input: 'src/main.js',
 	output: {
 		file: 'dist/event_bus.js',
-		format: 'cjs', // immediately-invoked function expression — suitable for <script> tags
+		format: 'umd', 
 		sourcemap: true
 	},
 	plugins: [
+		babel(),
 		resolve(), // tells Rollup how to find date-fns in node_modules
 		commonjs(), // converts date-fns to ES modules
 		production && uglify() // minify, but only in production

@@ -7,8 +7,9 @@ const utils = require('./utils')
 function _Event(option) {
     // 调式模式
     this._debug = option.debug
-    this._online = true
+    // 事件订阅队列
     this._eventList = new Map();
+    // 事件发布队列
     this._emitList = new Map();
 
     /**
@@ -35,9 +36,12 @@ function _Event(option) {
             if (offline) {
                 if (_emitList.has(type)) {
                     let msgList = _emitList.get(type)
+                    // 异步执行，防止阻塞订阅
+                   setTimeout(() => {
                     msgList.forEach(msg => {
                         cb(msg)
                     })
+                   },0)
                 }
             }
             _log(`${type} register a handler `)
