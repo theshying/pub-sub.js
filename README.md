@@ -1,17 +1,42 @@
 # event-bus
 
-#### 项目介绍
-event-bus是一个轻量级的无任何依赖的事件发布订阅库，支持离线订阅消息，自定义订阅次数等功能
+### Introduction
 
-#### 安装教程
+> event-bus is a ligtweight、none dependence lib, it supports distribution、subscription and offline subscription.
 
-1. xxxx
-2. xxxx
-3. xxxx
+### Install
 
-#### 使用说明
+> npm i event-bus
 
-1. xxxx
-2. xxxx
-3. xxxx
+### Usage
+```
+const e = new _event({})   //init
+const handler = (params) => {
+    console.log(params)
+}
+//event subscripte
+e.on('msg', handler);  
+
+//event distribute
+e.emit('msg', 'recive a message');  
+
+//remove subscripte
+e.off('msg', handler)  
+
+```
+
+
+### Api
+
+#### on
+
+#### once
+
+#### emit
+
+#### off
+
+#### emitList
+
+#### eventList
 
