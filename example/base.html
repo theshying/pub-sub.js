@@ -26,9 +26,7 @@
     var e = new eventBus({
     });
 
-    var handler = function(msg) {
-        msgList.innerHTML = `${msgList.value}\n${formmat()}收到：  ${ msg}`
-    }
+    var handler = {}
     // event subscribe
     e.on('msg', handler )
 

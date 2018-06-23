@@ -11,7 +11,6 @@ class event_bus {
     constructor(option) {
         // 调式模式
         this[_debug] = option ? option.debug || false : false
-        console.log(this[_debug])
         // 事件订阅队列
         this[_eventList] = new Map();
         // 事件发布队列
@@ -25,7 +24,7 @@ class event_bus {
      * @param {Boolean} flag  true:向函数队列头插入
      * @param {Boolean} offline  true:支持离线消息
      */
-    on(type, cb, flag, offline) {
+    on(type, cb, offline, flag) {
         if (utils.isFun(cb)) {
             if (this[_eventList].has(type)) {
                 let fns = this[_eventList].get(type)
@@ -51,6 +50,8 @@ class event_bus {
                 }
             }
             this[_debug] && utils.log(`${type} register a handler `)
+        } else {
+            utils.error(`type error:pubish handler must to be a Function , not a ${typeof cb}`)
         }
     }
 

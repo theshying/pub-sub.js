@@ -16,12 +16,7 @@
      * @param {*} cb 
      */
     function isFun(cb) {
-        if (checkType(cb, 'function')) {
-            return true;
-        } else {
-            throw new Error('rguments callBack accept a Function');
-        }
-
+        return checkType(cb, 'function')
     }
 
     /**
@@ -32,8 +27,23 @@
          console.log(msg)
     }
 
+    /**
+     * warn
+     */
+    function warn(msg) {
+        console.warn(msg)
+    }
+
+    /**
+     * error
+     */
+    function error(msg) {
+        console.error(msg)
+    }
 module.exports = {
     checkType,
     isFun,
-    log
+    log,
+    warn,
+    error
 }
