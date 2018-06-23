@@ -8,12 +8,12 @@ const babel = require('rollup-plugin-babel');
 const production = !process.env.ROLLUP_WATCH;
 
 export default {
-	name: 'event-bus',
 	input: 'src/main.js',
 	output: {
 		file: 'dist/event_bus.js',
 		format: 'umd', 
-		sourcemap: true
+		sourcemap: true,
+		name: 'eventBus'
 	},
 	plugins: [
 		babel(),

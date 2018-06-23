@@ -1,16 +1,22 @@
 const utils = require('./utils')
-
+const _emitList = Symbol('_emitList');
+const _eventList = Symbol('_eventList');
+const _debug = Symbol('_debug');
 /**
  * 事件订阅发布
  * @param {Object} option 
  */
-function _Event(option) {
-    // 调式模式
-    this._debug = option.debug
-    // 事件订阅队列
-    this._eventList = new Map();
-    // 事件发布队列
-    this._emitList = new Map();
+
+class event_bus {
+    constructor(option) {
+        // 调式模式
+        this[_debug] = option ? option.debug || false : false
+        console.log(this[_debug])
+        // 事件订阅队列
+        this[_eventList] = new Map();
+        // 事件发布队列
+        this[_emitList] = new Map();
+    }
 
     /**
      * 注册回调函数
@@ -19,71 +25,72 @@ function _Event(option) {
      * @param {Boolean} flag  true:向函数队列头插入
      * @param {Boolean} offline  true:支持离线消息
      */
-    function on(type, cb, flag, offline) {
-        if (isFun(cb)) {
-            if (_eventList.has(type)) {
-                let fns = _eventList.get(type)
+    on(type, cb, flag, offline) {
+        if (utils.isFun(cb)) {
+            if (this[_eventList].has(type)) {
+                let fns = this[_eventList].get(type)
                 // flag为true,则向前插入
                 if (flag) {
-                    _eventList.set(type, [cb].concat(fns));
+                    this[_eventList].set(type, [cb].concat(fns));
                 } else {
-                    _eventList.set(type, fns.concat([cb]));
+                   this[_eventList].set(type, fns.concat([cb]));
                 }
             } else {
-                _eventList.set(type, [cb])
+                this[_eventList].set(type, [cb])
             }
             // 如果是离线订阅，则执行缓存的emit list
             if (offline) {
-                if (_emitList.has(type)) {
-                    let msgList = _emitList.get(type)
+                if (this[_emitList].has(type)) {
+                    let msgList = this[_emitList].get(type)
                     // 异步执行，防止阻塞订阅
-                   setTimeout(() => {
-                    msgList.forEach(msg => {
-                        cb(msg)
-                    })
-                   },0)
+                    setTimeout(() => {
+                        msgList.forEach(msg => {
+                            cb(msg)
+                        })
+                    }, 0)
                 }
             }
-            _log(`${type} register a handler `)
+            this[_debug] && utils.log(`${type} register a handler `)
         }
     }
+
     /**
      * 注册回调函数，只回调一次
      * @param {*} type 注册主题
      * @param {Function} cb  回调函数
      * @param {*} flag  true:向函数队列头插入
      */
-    function once(type, cb, flag) {
+    once(type, cb, flag) {
         let temp = function () {
             cb(...arguments);
             this.off(type, temp)
         }
         this.on(type, temp, false)
     }
-
     /**
-     * 事件发布函数
-     * @param {*} type 事件主题 
-     * @param {*} msg  发布消息
-     */
-    function emit(type, ...msg) {
+  * 事件发布函数
+  * @param {*} type 事件主题 
+  * @param {*} msg  发布消息
+  */
+    emit(type, ...msg) {
         let msgList = [...msg];
         // 缓存发布记录
-        if (_emitList.has(type)) {
-            let msgs = _emitList.get(type);
-            _emitList.set(type, msgs.concat(msgList))
+        if (this[_emitList].has(type)) {
+            let msgs = this[_emitList].get(type);
+            this[_emitList].set(type, msgs.concat(msgList))
         } else {
-            _emitList.set(type, [...msg])
+            this[_emitList].set(type, [...msg])
         }
         // 执行回调函数
-        if (_eventList.has(type)) {
-            let fns = _eventList.get(type);
+        if (this[_eventList].has(type)) {
+            let fns = this[_eventList].get(type);
             fns.forEach(fn => {
                 fn.call(this, ...msg);
-                _log(`emit ${msg}`);
+                this[_debug] && utils.log(`emit ${msg}`);
             })
             return;
         }
+        this[_debug] && utils.log(`${type} emit a message `)
     }
 
     /**
@@ -91,14 +98,14 @@ function _Event(option) {
      * @param {*} 事件主题 
      * @param {*} 回调函数
      */
-    function off(type, ...fn) {
-        if (_eventList.has(type)) {
+    off(type, ...fn) {
+        if (this[_eventList].has(type)) {
             if ([...fn].length === 0) {
-                _eventList.set(type, []);
+                this[_eventList].set(type, []);
                 return;
             } else {
-                let fns = _eventList.get(type).filter(item => [...fn].indexOf(item) === -1);
-                _eventList.set(type, fns);
+                let fns = this[_eventList].get(type).filter(item => [...fn].indexOf(item) === -1);
+                this[_eventList].set(type, fns);
                 return
             }
         }
@@ -107,47 +114,17 @@ function _Event(option) {
     /**
      * 获取事件订阅列表
      */
-    function eventList() {
-        return _eventList
+    eventList() {
+        return this[_eventList]
     }
 
     /**
      * 获取事件发布列表
      */
-    function emitList() {
-        return _eventList
+    emitList() {
+        return this[_eventList]
     }
 
-    /**
-     * 判断是否为一个函数
-     * @param {*} cb 
-     */
-    function isFun(cb) {
-        if (utils.checkType(cb, 'function')) {
-            return true;
-        } else {
-            throw new Error('rguments callBack accept a Function');
-        }
+  }
 
-    }
-
-    /**
-     * 日志打印
-     * @param {*} msg 
-     */
-    function _log(msg) {
-        if (this._debug) {
-            console.info(msg)
-        }
-    }
-    return {
-        eventList,
-        emitList,
-        on,
-        emit,
-        off,
-        once,
-    }
-}
-
-exports.default = _Event({});
+module.exports = event_bus

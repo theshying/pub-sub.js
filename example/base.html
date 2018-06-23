@@ -9,22 +9,38 @@
 </head>
 <body>
     <input type="button" value="emit message" id="emit" style="display: block">
+    <input type="button" value="off" id="off" style="display: block">
     <textarea name="" cols="100"  id="msgList" cols="30" rows="10"></textarea>
 </body>
-<script>
+<script >
+    
     // date format
     function formmat() {
         let date = new Date();
         return `${date.getFullYear()}-${date.getMonth()+1}-${date.getDate()} ${date.getHours()}: ${date.getMinutes()}: ${date.getSeconds()}`
     }
-    var e = new _Event({});
+   
     var msgList = document.getElementById('msgList')
-    
-    e.on('msg', function(msg) {
+
+    // init instance
+    var e = new eventBus({
+    });
+
+    var handler = function(msg) {
         msgList.innerHTML = `${msgList.value}\n${formmat()}收到：  ${ msg}`
-    })
+    }
+    // event subscribe
+    e.on('msg', handler )
+
+    // event publish
     document.getElementById('emit').onclick= function() {
         e.emit('msg', 'hello')
     }
+
+    //remove event subscribe handler
+    document.getElementById('off').onclick= function() {
+        e.off('msg', handler)
+    }
+
 </script>
 </html>
