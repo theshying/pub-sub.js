@@ -9,7 +9,16 @@
 > npm i event-bus
 
 ### Usage
+
+#### Browser
 ```
+  <script src="../dist/event_bus.js"></script>
+    var e = new eventBus({
+    });
+```
+#### Node
+```
+const _event = require('e')
 const e = new _event({})   //init
 const handler = (params) => {
     console.log(params)
