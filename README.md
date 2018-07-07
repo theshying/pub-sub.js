@@ -127,7 +127,8 @@ e.off('msg', handler)
         </tr>
     </tbody>
 </table>
-> ps: the handler use once() to add will not be removed by off()
+
+> *ps: the handler use once() to add will not be removed by off()*
  
 
 
