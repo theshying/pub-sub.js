@@ -37,8 +37,13 @@ e.off('msg', handler)
 
 ### Api
 
-#### on
-
+#### on(type, cb ,offline, flag)
+```
+ type: subscribe type
+ cb: callback function
+ offline: true: support offline subscribe, In other words Subscribe is after emit
+ flag: callback insert first or last of event queue
+```
 #### once
 
 #### emit

@@ -21,8 +21,8 @@ class event_bus {
      * 注册回调函数
      * @param {*} type 注册主题
      * @param {Function} cb  回调函数
-     * @param {Boolean} flag  true:向函数队列头插入
      * @param {Boolean} offline  true:支持离线消息
+     * @param {Boolean} flag  true:向函数队列头插入
      */
     on(type, cb, offline, flag) {
         if (utils.isFun(cb)) {
@@ -41,6 +41,9 @@ class event_bus {
             if (offline) {
                 if (this[_emitList].has(type)) {
                     let msgList = this[_emitList].get(type)
+                    msgList.forEach(msg => {
+                        cb.call(this, msg)
+                    })
                     // 异步执行，防止阻塞订阅
                     setTimeout(() => {
                         msgList.forEach(msg => {
@@ -55,18 +58,19 @@ class event_bus {
         }
     }
 
-    /**
-     * 注册回调函数，只回调一次
+   /**
+    * 
      * @param {*} type 注册主题
      * @param {Function} cb  回调函数
-     * @param {*} flag  true:向函数队列头插入
-     */
-    once(type, cb, flag) {
+     * @param {Boolean} offline  true:支持离线消息
+     * @param {Boolean} flag  true:向函数队列头插入
+    */
+    once(type, cb,offline, flag) {
         let temp = function () {
             cb(...arguments);
             this.off(type, temp)
         }
-        this.on(type, temp, false)
+        this.on(type, temp, offline, flag)
     }
     /**
   * 事件发布函数
@@ -86,7 +90,10 @@ class event_bus {
         if (this[_eventList].has(type)) {
             let fns = this[_eventList].get(type);
             fns.forEach(fn => {
-                fn.call(this, ...msg);
+                msgList.forEach(m => {
+                    fn.call(this, m);
+                })
+              
                 this[_debug] && utils.log(`emit ${msg}`);
             })
             return;
@@ -123,7 +130,7 @@ class event_bus {
      * 获取事件发布列表
      */
     emitList() {
-        return this[_eventList]
+        return this[_emitList]
     }
 
   }
