@@ -1,8 +1,8 @@
 {
-  "name": "event-bus",
+  "name": "super-pub-sub.js",
   "version": "1.0.0",
-  "description": "",
-  "main": "main.js",
+  "description": "super-pub-sub.js is a ligtweight、none dependence lib, it supports event pulish、subscibe and offline subscibe.",
+  "main": "index.js",
   "scripts": {
     "build": "rollup -c",
     "watch": "rollup -c -w",
@@ -12,15 +12,24 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/theshying/event-bus.git"
+    "url": "git+https://github.com/theshying/super-pub-sub.js.git"
   },
-  "keywords": [],
+  "keywords": [
+    "pub",
+		"sub",
+		"pubsub",
+		"publish",
+		"subscribe",
+		"distributed",
+		"event-emitter",
+		"event-bus"
+  ],
   "author": "theShy",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/theshying/event-bus/issues"
+    "url": "https://github.com/theshying/super-pub-sub.js/issues"
   },
-  "homepage": "https://github.com/theshying/event-bus#readme",
+  "homepage": "https://github.com/theshying/super-pub-sub.js#readme",
   "devDependencies": {
     "babel-core": "^6.26.3",
     "babel-preset-es2015-rollup": "^3.0.0",
@@ -33,6 +42,5 @@
     "rollup-plugin-node-resolve": "^3.0.0",
     "rollup-plugin-uglify": "^3.0.0",
     "serve": "^6.5.8"
-  },
-  "dependencies": {}
+  }
 }

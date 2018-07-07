@@ -1,16 +1,16 @@
 # event-bus
 
-### Introduction
+## Introduction
 
 > pub-sub.js is a ligtweight、none dependence lib, it supports event pulish、subscibe and offline subscibe.
 
-### Install
+## Install
 
-> npm i event-bus
+> npm i super-pub-sub.js --save
 
-### Usage
+## Usage
 
-#### Browser
+### Browser
 ```javascript
   <script src="../dist/event_bus.js"></script>
     var e = new eventBus({
@@ -27,7 +27,7 @@
     //remove subscripte
     e.off('msg', handler)  
 ```
-#### Node
+### Node
 ```javascript
 const _event = require('e')
 const e = new _event({})   //init
@@ -46,9 +46,9 @@ e.off('msg', handler)
 ```
 
 
-### Api
+## Api
 
-#### on(type, cb ,offline, flag)
+### on(type, cb ,offline, flag)
 
 > **add  handler functon**
 <table>
@@ -87,7 +87,7 @@ e.off('msg', handler)
         </tr>
     </tbody>
 </table>
-#### once(type, cb, offline, flag)
+### once(type, cb, offline, flag)
 
 > **add handler functon, this function will only execute one time**
 
@@ -131,7 +131,7 @@ e.off('msg', handler)
  
 
 
-#### emit(type, message)
+### emit(type, message)
 
 > **publish a messgae in a subject**
 <table>
@@ -160,14 +160,13 @@ e.off('msg', handler)
     </tbody>
 </table>
 
-#### off(type, cd)
+### off(type, cd)
 
 >**remove hanbler function**
 
-> ps: off(type) will remove all handler under this subject
-
-#### emitList()
+> *ps: off(type) will remove all handler under this subject*
+### emitList()
 >**return all pulish message list**
 
-#### eventList()
+### eventList()
 >**return all subscibe handler**
