@@ -2,7 +2,7 @@
 
 ### Introduction
 
-> event-bus is a ligtweight、none dependence lib, it supports distribution、subscription and offline subscription.
+> pub-sub.js is a ligtweight、none dependence lib, it supports event pulish、subscibe and offline subscibe.
 
 ### Install
 
@@ -15,6 +15,17 @@
   <script src="../dist/event_bus.js"></script>
     var e = new eventBus({
     });
+    const handler = (params) => {
+        console.log(params)
+    }
+    //event subscripte
+    e.on('msg', handler);  
+    
+    //event distribute
+    e.emit('msg', 'recive a message');  
+    
+    //remove subscripte
+    e.off('msg', handler)  
 ```
 #### Node
 ```javascript
@@ -44,6 +55,7 @@ e.off('msg', handler)
     <thead>
         <tr>
             <th>name</th>
+            <th>type</th>
             <th>default</th>
             <th>descriptin</th>
         </tr>
@@ -51,23 +63,27 @@ e.off('msg', handler)
     <tbody>
         <tr>
             <td>type</td>
+            <td>String Number Boolean  Expression</td>
             <td>-</td>
-            <td>subject of pub-sub, support String Number Boolean and Expression</td>
+            <td>subject of pub-sub</td>
         </tr>
         <tr>
             <td>cb</td>
+            <td>Function</td>
             <td>-</td>
-            <td>handler  of pub-sub</td>
+            <td>handler of pub-sub</td>
         </tr>
         <tr>
             <td>offline</td>
+            <td>Boolean</td>
             <td>false</td>
             <td>support offline subscibe? default:false.</td>
         </tr>
         <tr>
             <td>flag</td>
+            <td>Boolean</td>
             <td>false</td>
-            <td>unshift or push  handler  in event queue(true: unshift, false: push) default true</td>
+            <td>unshift or push  handler in event queue(true: unshift, false: push)</td>
         </tr>
     </tbody>
 </table>
@@ -75,11 +91,42 @@ e.off('msg', handler)
 
 > **add handler functon, this function will only execute one time**
 
- - *type:* :       subject of pub-sub
- - *cb:*         handler  of pub-sub
- - *offline:*:     support offline subscibe? default:false.
- - *flag:*     handler  unshift or push in event queue(true: unshift, false: push) default true
-
+<table>
+    <thead>
+        <tr>
+            <th>name</th>
+            <th>type</th>
+            <th>default</th>
+            <th>descriptin</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>type</td>
+            <td>String Number Boolean  Expression</td>
+            <td>-</td>
+            <td>subject of pub-sub</td>
+        </tr>
+        <tr>
+            <td>cb</td>
+            <td>Function</td>
+            <td>-</td>
+            <td>handler of pub-sub</td>
+        </tr>
+        <tr>
+            <td>offline</td>
+            <td>Boolean</td>
+            <td>false</td>
+            <td>support offline subscibe? default:false.</td>
+        </tr>
+        <tr>
+            <td>flag</td>
+            <td>Boolean</td>
+            <td>false</td>
+            <td>unshift or push  handler in event queue(true: unshift, false: push)</td>
+        </tr>
+    </tbody>
+</table>
 > ps: the handler use once() to add will not be removed by off()
  
 
@@ -87,9 +134,31 @@ e.off('msg', handler)
 #### emit(type, message)
 
 > **publish a messgae in a subject**
-
-- *type:* subject of publish
-- *message:* message of publish
+<table>
+    <thead>
+        <tr>
+            <th>name</th>
+            <th>type</th>
+            <th>default</th>
+            <th>descriptin</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>type</td>
+            <td>String Number Boolean  Expression</td>
+            <td>-</td>
+            <td>subject of publish</td>
+        </tr>
+        <tr>
+            <td>cb</td>
+            <td>Function</td>
+            <td>-</td>
+            <td>message of publish</td>
+        </tr>
+     
+    </tbody>
+</table>
 
 #### off(type, cd)
 
