@@ -29,7 +29,7 @@
 ```
 ### Node
 ```javascript
-const _event = require('e')
+const _event = require('super-pub-sub.js')
 const e = new _event({})   //init
 const handler = (params) => {
     console.log(params)
