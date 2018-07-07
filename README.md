@@ -40,15 +40,37 @@ e.off('msg', handler)
 #### on(type, cb ,offline, flag)
 
 > **add  handler functon**
-
-
- - *type* :       subject of pub-sub
- - *cb*   :         handler  of pub-sub
- -  *offline*:     support offline subscibe? default:false.
- - *flag* :    handler  unshift or push in event queue(true: unshift, false: push) default true
-
-
-
+<table>
+    <thead>
+        <tr>
+            <th>name</th>
+            <th>default</th>
+            <th>descriptin</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>type</td>
+            <td>-</td>
+            <td>subject of pub-sub, support String Number Boolean and Expression</td>
+        </tr>
+        <tr>
+            <td>cb</td>
+            <td>-</td>
+            <td>handler  of pub-sub</td>
+        </tr>
+        <tr>
+            <td>offline</td>
+            <td>false</td>
+            <td>support offline subscibe? default:false.</td>
+        </tr>
+        <tr>
+            <td>flag</td>
+            <td>false</td>
+            <td>unshift or push  handler  in event queue(true: unshift, false: push) default true</td>
+        </tr>
+    </tbody>
+</table>
 #### once(type, cb, offline, flag)
 
 > **add handler functon, this function will only execute one time**
