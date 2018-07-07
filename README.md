@@ -11,13 +11,13 @@
 ### Usage
 
 #### Browser
-```
+```javascript
   <script src="../dist/event_bus.js"></script>
     var e = new eventBus({
     });
 ```
 #### Node
-```
+```javascript
 const _event = require('e')
 const e = new _event({})   //init
 const handler = (params) => {
@@ -38,19 +38,45 @@ e.off('msg', handler)
 ### Api
 
 #### on(type, cb ,offline, flag)
-```
- type: subscribe type
- cb: callback function
- offline: true: support offline subscribe, In other words Subscribe is after emit
- flag: callback insert first or last of event queue
-```
-#### once
 
-#### emit
+> **add  handler functon**
 
-#### off
 
-#### emitList
+ - *type* :       subject of pub-sub
+ - *cb*   :         handler  of pub-sub
+ -  *offline*:     support offline subscibe? default:false.
+ - *flag* :    handler  unshift or push in event queue(true: unshift, false: push) default true
 
-#### eventList
 
+
+#### once(type, cb, offline, flag)
+
+> **add handler functon, this function will only execute one time**
+
+ - *type:* :       subject of pub-sub
+ - *cb:*         handler  of pub-sub
+ - *offline:*:     support offline subscibe? default:false.
+ - *flag:*     handler  unshift or push in event queue(true: unshift, false: push) default true
+
+> ps: the handler use once() to add will not be removed by off()
+ 
+
+
+#### emit(type, message)
+
+> **publish a messgae in a subject**
+
+- *type:* subject of publish
+- *message:* message of publish
+
+#### off(type, cd)
+
+>**remove hanbler function**
+
+> ps: off(type) will remove all handler under this subject
+
+#### emitList()
+>**return all pulish message list**
+
+#### eventList()
+>**return all subscibe handler**
