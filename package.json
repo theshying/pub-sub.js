@@ -1,0 +1,46 @@
+{
+  "name": "super-pub-sub.js",
+  "version": "1.0.0",
+  "description": "super-pub-sub.js is a ligtweight、none dependence lib, it supports event pulish、subscibe and offline subscibe.",
+  "main": "index.js",
+  "scripts": {
+    "build": "rollup -c",
+    "watch": "rollup -c -w",
+    "dev": "npm-run-all --parallel start watch",
+    "start": "serve public",
+    "test": "mocha test/*.test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/theshying/super-pub-sub.js.git"
+  },
+  "keywords": [
+    "pub",
+		"sub",
+		"pubsub",
+		"publish",
+		"subscribe",
+		"distributed",
+		"event-emitter",
+		"event-bus"
+  ],
+  "author": "theShy",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/theshying/super-pub-sub.js/issues"
+  },
+  "homepage": "https://github.com/theshying/super-pub-sub.js#readme",
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-preset-es2015-rollup": "^3.0.0",
+    "chai": "^4.1.2",
+    "mocha": "^5.2.0",
+    "npm-run-all": "^4.1.2",
+    "rollup": "^0.55.5",
+    "rollup-plugin-babel": "^3.0.4",
+    "rollup-plugin-commonjs": "^8.0.2",
+    "rollup-plugin-node-resolve": "^3.0.0",
+    "rollup-plugin-uglify": "^3.0.0",
+    "serve": "^6.5.8"
+  }
+}
