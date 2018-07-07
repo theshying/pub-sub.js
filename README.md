@@ -87,6 +87,8 @@ e.off('msg', handler)
         </tr>
     </tbody>
 </table>
+
+
 ### once(type, cb, offline, flag)
 
 > **add handler functon, this function will only execute one time**
@@ -157,11 +159,10 @@ e.off('msg', handler)
             <td>-</td>
             <td>message of publish</td>
         </tr>
-     
     </tbody>
 </table>
 
-### off(type, cd)
+### off(type, cb)
 
 >**remove hanbler function**
 
