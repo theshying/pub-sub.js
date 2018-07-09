@@ -1,6 +1,6 @@
 {
   "name": "@theshy/pub-sub.js",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "super-pub-sub.js is a ligtweight、none dependence lib, it supports event pulish、subscibe and offline subscibe.",
   "main": "index.js",
   "scripts": {
