@@ -1,18 +1,18 @@
-# super-pub-sub.js
+# pub-sub.js
 
 ## Introduction
 
-> pub-sub.js is a ligtweight、none dependence lib, it supports event pulish、subscibe and offline subscibe.
+>pub-sub.js is a ligtweight、none dependence lib, it supports event pulish、subscibe and offline subscibe.
 
 ## Install
 
-> npm i super-pub-sub.js --save
+> npm i @theshy/pub-sub.js --save
 
 ## Usage
 
 ### Browser
 ```javascript
-  <script src="../dist/event_bus.js"></script>
+  <script src="/dist/pub-sub.js"></script>
     var e = new eventBus({
     });
     const handler = (params) => {
@@ -29,7 +29,7 @@
 ```
 ### Node
 ```javascript
-const _event = require('super-pub-sub.js')
+const _event = require('@theshy/pub-sub.js')
 const e = new _event({})   //init
 const handler = (params) => {
     console.log(params)
