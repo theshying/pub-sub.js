@@ -1,4 +1,4 @@
-# event-bus
+# super-pub-sub.js
 
 ## Introduction
 
