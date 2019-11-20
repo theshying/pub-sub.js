@@ -10,10 +10,10 @@ const production = !process.env.ROLLUP_WATCH;
 export default {
 	input: 'src/main.js',
 	output: {
-		file: 'dist/event_bus.js',
+		file: 'dist/pub-sub.js',
 		format: 'umd', 
 		sourcemap: true,
-		name: 'eventBus'
+		name: 'pub-sub'
 	},
 	plugins: [
 		babel(),

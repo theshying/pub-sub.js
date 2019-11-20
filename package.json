@@ -1,6 +1,6 @@
 {
-  "name": "super-pub-sub.js",
-  "version": "1.0.0",
+  "name": "@theshy/pub-sub.js",
+  "version": "0.0.2",
   "description": "super-pub-sub.js is a ligtweight、none dependence lib, it supports event pulish、subscibe and offline subscibe.",
   "main": "index.js",
   "scripts": {
@@ -12,7 +12,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/theshying/super-pub-sub.js.git"
+    "url": "git+https://github.com/theshying/pub-sub.js.git"
   },
   "keywords": [
     "pub",
@@ -27,9 +27,9 @@
   "author": "theShy",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/theshying/super-pub-sub.js/issues"
+    "url": "https://github.com/theshying/pub-sub.js/issues"
   },
-  "homepage": "https://github.com/theshying/super-pub-sub.js#readme",
+  "homepage": "https://github.com/theshying/pub-sub.js#readme",
   "devDependencies": {
     "babel-core": "^6.26.3",
     "babel-preset-es2015-rollup": "^3.0.0",
