@@ -25,7 +25,7 @@
 		"event-bus"
   ],
   "author": "theShy",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/theshying/pub-sub.js/issues"
   },

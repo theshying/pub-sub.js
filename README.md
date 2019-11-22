@@ -1,16 +1,32 @@
-# pub-sub.js
+<h1 align="center">Welcome to @theshy/pub-sub.js 👋</h1>
+<p>
+  <a href="https://www.npmjs.com/package/@theshy/pub-sub.js" target="_blank">
+    <img alt="Version" src="https://img.shields.io/npm/v/@theshy/pub-sub.js.svg">
+  </a>
+  <a href="https://github.com/theshying/pub-sub.js#readme" target="_blank">
+    <img alt="Documentation" src="https://img.shields.io/badge/documentation-yes-brightgreen.svg" />
+  </a>
+  <a href="https://github.com/theshying/pub-sub.js/graphs/commit-activity" target="_blank">
+    <img alt="Maintenance" src="https://img.shields.io/badge/Maintained%3F-yes-green.svg" />
+  </a>
+  <a href="https://github.com/theshying/pub-sub.js/blob/master/LICENSE" target="_blank">
+    <img alt="License: MIT" src="https://img.shields.io/github/license/theShy/@theshy/pub-sub.js" />
+  </a>
+</p>
 
-## Introduction
+> super-pub-sub.js is a ligtweight、none dependence lib, it supports event pulish、subscibe and offline subscibe.
 
->pub-sub.js is a ligtweight、none dependence lib, it supports event pulish、subscibe and offline subscibe.
+### 🏠 [Homepage](https://github.com/theshying/pub-sub.js#readme)
 
-## Install
+## :tada:Install
 
-> npm i @theshy/pub-sub.js --save
+```sh
+npm i @theshy/pub-sub.js --save
+```
 
-## Usage
+## :pencil:Usage
 
-### Browser
+### *Browser*
 ```javascript
   <script src="/dist/pub-sub.js"></script>
     var e = new eventBus({
@@ -27,7 +43,7 @@
     //remove subscripte
     e.off('msg', handler)  
 ```
-### Node
+### *Node*
 ```javascript
 const _event = require('@theshy/pub-sub.js')
 const e = new _event({})   //init
@@ -44,11 +60,9 @@ e.emit('msg', 'recive a message');
 e.off('msg', handler)  
 
 ```
+## :zap: Api
 
-
-## Api
-
-### on(type, cb ,offline, flag)
+### *on(type, cb ,offline, flag)*
 
 > **add  handler functon**
 <table>
@@ -89,7 +103,7 @@ e.off('msg', handler)
 </table>
 
 
-### once(type, cb, offline, flag)
+### *once(type, cb, offline, flag)*
 
 > **add handler functon, this function will only execute one time**
 
@@ -131,10 +145,10 @@ e.off('msg', handler)
 </table>
 
 > *ps: the handler use once() to add will not be removed by off()*
- 
 
 
-### emit(type, message)
+
+### *emit(type, message)*
 
 > **publish a messgae in a subject**
 <table>
@@ -162,13 +176,39 @@ e.off('msg', handler)
     </tbody>
 </table>
 
-### off(type, cb)
+### *off(type, cb)*
 
 >**remove hanbler function**
 
 > *ps: off(type) will remove all handler under this subject*
-### emitList()
+### *emitList()*
 >**return all pulish message list**
 
-### eventList()
+### *eventList()*
 >**return all subscibe handler**
+
+
+## :white_check_mark:Run tests
+
+```sh
+npm run test
+```
+
+## Author
+
+👤 **theShy**
+
+* Github: [@theShy](https://github.com/theShy)
+
+## 🤝 Contributing
+
+Contributions, issues and feature requests are welcome!<br />Feel free to check [issues page](https://github.com/theshying/pub-sub.js/issues).
+
+## Show your support
+
+Give a ⭐️ if this project helped you!
+
+## 📝 License
+
+Copyright © 2019 [theShy](https://github.com/theShy).<br />
+This project is [MIT](https://github.com/theshying/pub-sub.js/blob/master/LICENSE) licensed.
