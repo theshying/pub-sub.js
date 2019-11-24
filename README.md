@@ -1,5 +1,6 @@
 <h1 align="center">Welcome to @theshy/pub-sub.js 👋</h1>
 <p>
+  <img  alt="build" src="https://travis-ci.org/theshying/pub-sub.js.svg?branch=master">
   <a href="https://www.npmjs.com/package/@theshy/pub-sub.js" target="_blank">
     <img alt="Version" src="https://img.shields.io/npm/v/@theshy/pub-sub.js.svg">
   </a>
@@ -10,7 +11,7 @@
     <img alt="Maintenance" src="https://img.shields.io/badge/Maintained%3F-yes-green.svg" />
   </a>
   <a href="https://github.com/theshying/pub-sub.js/blob/master/LICENSE" target="_blank">
-    <img alt="License: MIT" src="https://img.shields.io/github/license/theShy/@theshy/pub-sub.js" />
+   <img alt="License: MIT" src="https://img.shields.io/badge/License-MIT-yellow.svg" />
   </a>
 </p>
 
