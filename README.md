@@ -199,7 +199,7 @@ npm run test
 
 👤 **theShy**
 
-* Github: [@theShy](https://github.com/theShy)
+* Github: [@theshying](https://github.com/theshying)
 
 ## 🤝 Contributing
 
